@@ -811,14 +811,14 @@
     }
 
     /* 3D Object — base shape */
-    .sol-card__object {
+    .sol-icon {
       position: relative;
       transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .sol-card:hover .sol-card__object,
-    .sol-card:focus-within .sol-card__object,
-    .sol-card.expanded .sol-card__object {
+    .sol-card:hover .sol-icon,
+    .sol-card:focus-within .sol-icon,
+    .sol-card.expanded .sol-icon {
       transform: translateY(-3px);
     }
 
@@ -886,297 +886,41 @@
       50% { transform: rotateY(-8deg) rotateX(2deg); }
     }
 
-    /* ── 3D Object Styles ── */
+    /* ── Neon SVG Icon Styles ── */
 
-    /* Shield — Secure Infrastructure */
-    .obj-shield {
-      width: 110px;
-      height: 130px;
+    .sol-icon {
+      width: 100px;
+      height: 100px;
       position: relative;
-      perspective: 400px;
-      animation: floatSlow 4s ease-in-out infinite;
+      animation: floatSlow 5s ease-in-out infinite;
     }
-    .obj-shield__face {
+
+    .sol-icon:nth-child(2) { animation-delay: -0.8s; }
+
+    .sol-icon svg {
       width: 100%;
       height: 100%;
-      background: linear-gradient(160deg, #1c2430 0%, #101824 50%, #141c28 100%);
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      position: relative;
-      animation: rotateSlow 6s ease-in-out infinite;
-      box-shadow: 0 0 40px rgba(0, 212, 255, 0.12);
+      filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.3));
+      transition: filter 0.4s ease;
     }
-    .obj-shield__face::after {
+
+    .sol-card:hover .sol-icon svg {
+      filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5)) drop-shadow(0 0 40px rgba(0, 212, 255, 0.15));
+    }
+
+    /* Reflection glow beneath icon */
+    .sol-icon::after {
       content: '';
       position: absolute;
-      inset: 3px;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      background: transparent;
-      border: 1.5px solid rgba(0, 212, 255, 0.4);
-    }
-    .obj-shield__edge {
-      position: absolute;
-      bottom: -10px;
+      bottom: -14px;
       left: 50%;
       transform: translateX(-50%);
-      width: 65%;
-      height: 8px;
-      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.45), transparent);
-      border-radius: 50%;
-      filter: blur(5px);
-      animation: pulseGlow 3s ease-in-out infinite;
-    }
-
-    /* Brain — AI */
-    .obj-brain {
-      width: 120px;
-      height: 120px;
-      position: relative;
-      perspective: 400px;
-      animation: floatSlow 4.5s ease-in-out infinite 0.5s;
-    }
-    .obj-brain__sphere {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at 35% 30%, #22263a 0%, #141828 60%, #0c1018 100%);
-      border: 1.5px solid rgba(139, 92, 246, 0.35);
-      position: relative;
-      transform: rotateY(-6deg);
-      box-shadow: 0 0 50px rgba(139, 92, 246, 0.12);
-      overflow: hidden;
-    }
-    .obj-brain__sphere::before {
-      content: '';
-      position: absolute;
-      inset: 15%;
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      border-radius: 50%;
-    }
-    .obj-brain__sphere::after {
-      content: '';
-      position: absolute;
-      top: 18%;
-      left: 18%;
-      width: 28%;
-      height: 28%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent);
-    }
-    .obj-brain__ring {
-      position: absolute;
-      inset: -12px;
-      border: 1.5px solid rgba(139, 92, 246, 0.18);
-      border-radius: 50%;
-      animation: spinRing 12s linear infinite;
-    }
-    .obj-brain__edge {
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 65%;
-      height: 8px;
-      background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent);
-      border-radius: 50%;
-      filter: blur(5px);
-      animation: pulseGlow 3.5s ease-in-out infinite;
-    }
-
-    /* Compass — IT Consulting */
-    .obj-compass {
-      width: 120px;
-      height: 120px;
-      position: relative;
-      animation: floatSlow 5s ease-in-out infinite 0.3s;
-    }
-    .obj-compass__dial {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: linear-gradient(160deg, #1a2220 0%, #0e1814 60%);
-      border: 1.5px solid rgba(16, 185, 129, 0.3);
-      transform: rotateX(30deg) rotateZ(-15deg);
-      position: relative;
-      box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
-    }
-    .obj-compass__dial::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 3px;
-      height: 40%;
-      background: linear-gradient(to bottom, rgba(16, 185, 129, 0.8), rgba(16, 185, 129, 0.15));
-      border-radius: 2px;
-      transform-origin: center bottom;
-      animation: swingNeedle 4s ease-in-out infinite;
-    }
-    .obj-compass__dial::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10px;
+      width: 60%;
       height: 10px;
-      background: rgba(16, 185, 129, 0.5);
+      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
       border-radius: 50%;
-      box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
-    }
-    .obj-compass__edge {
-      position: absolute;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 65%;
-      height: 8px;
-      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
-      border-radius: 50%;
-      filter: blur(5px);
-      animation: pulseGlow 3s ease-in-out infinite 0.5s;
-    }
-
-    /* People — Nearshore Teams */
-    .obj-people {
-      width: 140px;
-      height: 100px;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 10px;
-    }
-    .obj-people__bar {
-      width: 28px;
-      border-radius: 8px 8px 4px 4px;
-      background: linear-gradient(to top, #1a1c20, #222630);
-      border: 1.5px solid rgba(245, 158, 11, 0.2);
-      transform: perspective(200px) rotateY(-4deg);
-      box-shadow: 0 0 20px rgba(245, 158, 11, 0.06);
-    }
-    .obj-people__bar:nth-child(1) { height: 50px; animation: barPulse1 3s ease-in-out infinite 0.2s; }
-    .obj-people__bar:nth-child(2) { height: 70px; border-color: rgba(245, 158, 11, 0.3); animation: barPulse2 3s ease-in-out infinite 0.4s; }
-    .obj-people__bar:nth-child(3) { height: 90px; border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 0 25px rgba(245, 158, 11, 0.1); animation: barPulse3 3s ease-in-out infinite 0.6s; }
-    .obj-people__bar:nth-child(4) { height: 60px; animation: barPulse4 3s ease-in-out infinite 0.8s; }
-    .obj-people__edge {
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 85%;
-      height: 8px;
-      background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.35), transparent);
-      border-radius: 50%;
-      filter: blur(5px);
-      animation: pulseGlow 3s ease-in-out infinite;
-    }
-
-    /* Cloud — Cloud Solutions */
-    .obj-cloud {
-      width: 140px;
-      height: 100px;
-      position: relative;
-    }
-    .obj-cloud__body {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      width: 130px;
-      height: 65px;
-      background: linear-gradient(160deg, #1a2230 0%, #101820 100%);
-      border-radius: 32px;
-      border: 1.5px solid rgba(56, 189, 248, 0.3);
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.1);
-      animation: cloudBob 4s ease-in-out infinite;
-    }
-    .obj-cloud__top {
-      position: absolute;
-      bottom: 42px;
-      left: 50%;
-      transform: translateX(-40%);
-      width: 65px;
-      height: 65px;
-      background: linear-gradient(160deg, #1c2430 0%, #121a24 100%);
-      border-radius: 50%;
-      border: 1.5px solid rgba(56, 189, 248, 0.25);
-    }
-    .obj-cloud__top2 {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-80%);
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(160deg, #1a2028 0%, #10161e 100%);
-      border-radius: 50%;
-      border: 1.5px solid rgba(56, 189, 248, 0.2);
-    }
-    .obj-cloud__edge {
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 75%;
-      height: 8px;
-      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
-      border-radius: 50%;
-      filter: blur(5px);
-      animation: pulseGlow 3.5s ease-in-out infinite 0.3s;
-    }
-
-    /* Book — Training & Support */
-    .obj-book {
-      width: 120px;
-      height: 100px;
-      position: relative;
-      perspective: 400px;
-      animation: floatSlow 5s ease-in-out infinite 0.7s;
-    }
-    .obj-book__cover {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(160deg, #201828 0%, #160e1a 100%);
-      border-radius: 4px 14px 14px 4px;
-      border: 1.5px solid rgba(244, 63, 94, 0.3);
-      animation: bookTilt 6s ease-in-out infinite;
-      transform-origin: left center;
-      box-shadow: 0 0 35px rgba(244, 63, 94, 0.08);
-    }
-    .obj-book__spine {
-      position: absolute;
-      left: 0;
-      top: 5%;
-      width: 5px;
-      height: 90%;
-      background: linear-gradient(to bottom, rgba(244, 63, 94, 0.45), rgba(244, 63, 94, 0.15));
-      border-radius: 2px;
-      transform: rotateY(-15deg);
-      transform-origin: left center;
-    }
-    .obj-book__page {
-      position: absolute;
-      top: 4px;
-      left: 7px;
-      right: 4px;
-      bottom: 4px;
-      background: linear-gradient(160deg, #1e1624 0%, #16101c 100%);
-      border-radius: 2px 12px 12px 2px;
-      border: 1px solid rgba(244, 63, 94, 0.12);
-      transform: rotateY(-12deg) rotateX(5deg);
-      transform-origin: left center;
-    }
-    .obj-book__edge {
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 65%;
-      height: 8px;
-      background: linear-gradient(90deg, transparent, rgba(244, 63, 94, 0.35), transparent);
-      border-radius: 50%;
-      filter: blur(5px);
-      animation: pulseGlow 3s ease-in-out infinite 0.8s;
+      filter: blur(6px);
+      animation: pulseGlow 3.5s ease-in-out infinite;
     }
 
     /* ── Card Content (bottom area) ── */
@@ -2002,7 +1746,7 @@
     }
 
     /* Solution card 3D objects — enhanced glow on scroll reveal */
-    .sol-card.visible .sol-card__object {
+    .sol-card.visible .sol-icon {
       animation: objectRevealGlow 1.2s ease forwards;
     }
 
@@ -2086,7 +1830,7 @@
         opacity: 1 !important;
         transform: none !important;
       }
-      .sol-card.visible .sol-card__object { animation: none; }
+      .sol-card.visible .sol-icon { animation: none; }
     }
 
     /* ══════════════════════════════════════
@@ -2581,10 +2325,17 @@
         <!-- Card 1: Secure Infrastructure -->
         <div class="sol-card" tabindex="0">
           <div class="sol-card__visual">
-            <div class="sol-card__glow" style="--glow: rgba(0,212,255,0.12);"></div>
-            <div class="sol-card__object obj-shield">
-              <div class="obj-shield__face"></div>
-              <div class="obj-shield__edge"></div>
+            <div class="sol-card__glow" style="--glow: rgba(0,212,255,0.15);"></div>
+            <div class="sol-icon" style="animation-delay: 0s;">
+              <svg viewBox="0 0 100 100" fill="none">
+                <path d="M50 10L85 28V55C85 72 70 86 50 92C30 86 15 72 15 55V28L50 10Z" stroke="url(#sh1)" stroke-width="1.8"/>
+                <path d="M50 20L75 33V55C75 67 64 78 50 83C36 78 25 67 25 55V33L50 20Z" stroke="rgba(0,212,255,0.15)" stroke-width="1"/>
+                <rect x="42" y="44" width="16" height="18" rx="2" stroke="rgba(0,212,255,0.6)" stroke-width="1.5"/>
+                <circle cx="50" cy="51" r="3" stroke="rgba(0,212,255,0.8)" stroke-width="1.2"/>
+                <path d="M50 54V58" stroke="rgba(0,212,255,0.8)" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M43 44V40C43 36.1 46.1 33 50 33C53.9 33 57 36.1 57 40V44" stroke="rgba(0,212,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                <defs><linearGradient id="sh1" x1="50" y1="10" x2="50" y2="92"><stop stop-color="#00d4ff" stop-opacity="0.8"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0.2"/></linearGradient></defs>
+              </svg>
             </div>
           </div>
           <div class="sol-card__content">
@@ -2598,11 +2349,24 @@
         <!-- Card 2: Artificial Intelligence -->
         <div class="sol-card" tabindex="0">
           <div class="sol-card__visual">
-            <div class="sol-card__glow" style="--glow: rgba(139,92,246,0.12);"></div>
-            <div class="sol-card__object obj-brain">
-              <div class="obj-brain__sphere"></div>
-              <div class="obj-brain__ring"></div>
-              <div class="obj-brain__edge"></div>
+            <div class="sol-card__glow" style="--glow: rgba(0,212,255,0.15);"></div>
+            <div class="sol-icon" style="animation-delay: -1.2s;">
+              <svg viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="32" stroke="url(#ai1)" stroke-width="1.8"/>
+                <circle cx="50" cy="50" r="22" stroke="rgba(0,212,255,0.15)" stroke-width="1"/>
+                <circle cx="50" cy="50" r="42" stroke="rgba(0,212,255,0.08)" stroke-width="0.8" stroke-dasharray="4 6"/>
+                <circle cx="50" cy="35" r="3.5" fill="rgba(0,212,255,0.7)"/>
+                <circle cx="38" cy="55" r="3.5" fill="rgba(0,212,255,0.5)"/>
+                <circle cx="62" cy="55" r="3.5" fill="rgba(0,212,255,0.5)"/>
+                <circle cx="50" cy="50" r="2.5" fill="rgba(0,212,255,0.9)"/>
+                <path d="M50 35L50 47.5" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
+                <path d="M38 55L47.5 50" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
+                <path d="M62 55L52.5 50" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
+                <path d="M38 55L50 35" stroke="rgba(0,212,255,0.15)" stroke-width="0.8" stroke-dasharray="3 4"/>
+                <path d="M62 55L50 35" stroke="rgba(0,212,255,0.15)" stroke-width="0.8" stroke-dasharray="3 4"/>
+                <path d="M38 55L62 55" stroke="rgba(0,212,255,0.15)" stroke-width="0.8" stroke-dasharray="3 4"/>
+                <defs><linearGradient id="ai1" x1="50" y1="18" x2="50" y2="82"><stop stop-color="#00d4ff" stop-opacity="0.7"/><stop offset="1" stop-color="#006080" stop-opacity="0.3"/></linearGradient></defs>
+              </svg>
             </div>
           </div>
           <div class="sol-card__content">
@@ -2616,10 +2380,18 @@
         <!-- Card 3: IT Consulting -->
         <div class="sol-card" tabindex="0">
           <div class="sol-card__visual">
-            <div class="sol-card__glow" style="--glow: rgba(16,185,129,0.12);"></div>
-            <div class="sol-card__object obj-compass">
-              <div class="obj-compass__dial"></div>
-              <div class="obj-compass__edge"></div>
+            <div class="sol-card__glow" style="--glow: rgba(0,212,255,0.15);"></div>
+            <div class="sol-icon" style="animation-delay: -2.5s;">
+              <svg viewBox="0 0 100 100" fill="none">
+                <path d="M50 15C38 15 30 24 30 35C30 44 35 50 42 54V62H58V54C65 50 70 44 70 35C70 24 62 15 50 15Z" stroke="url(#lt1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M42 62V66C42 70.4 45.6 74 50 74C54.4 74 58 70.4 58 66V62" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+                <path d="M42 67H58" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+                <path d="M42 71H58" stroke="rgba(0,212,255,0.15)" stroke-width="1"/>
+                <path d="M50 35V48" stroke="rgba(0,212,255,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M44 41L50 35L56 41" stroke="rgba(0,212,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 35H28M72 35H78M30 20L34 24M66 20L62 24" stroke="rgba(0,212,255,0.2)" stroke-width="1" stroke-linecap="round"/>
+                <defs><linearGradient id="lt1" x1="50" y1="15" x2="50" y2="62"><stop stop-color="#00d4ff" stop-opacity="0.75"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0.25"/></linearGradient></defs>
+              </svg>
             </div>
           </div>
           <div class="sol-card__content">
@@ -2633,13 +2405,19 @@
         <!-- Card 4: Nearshore Teams -->
         <div class="sol-card" tabindex="0">
           <div class="sol-card__visual">
-            <div class="sol-card__glow" style="--glow: rgba(245,158,11,0.12);"></div>
-            <div class="sol-card__object obj-people">
-              <div class="obj-people__bar"></div>
-              <div class="obj-people__bar"></div>
-              <div class="obj-people__bar"></div>
-              <div class="obj-people__bar"></div>
-              <div class="obj-people__edge"></div>
+            <div class="sol-card__glow" style="--glow: rgba(0,212,255,0.15);"></div>
+            <div class="sol-icon" style="animation-delay: -0.5s;">
+              <svg viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="30" r="10" stroke="url(#tm1)" stroke-width="1.8"/>
+                <circle cx="26" cy="45" r="8" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
+                <circle cx="74" cy="45" r="8" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
+                <path d="M35 70C35 58.9 41.7 50 50 50C58.3 50 65 58.9 65 70" stroke="rgba(0,212,255,0.6)" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M14 75C14 66 19 58 26 58C30 58 33.5 60.5 35.5 64.5" stroke="rgba(0,212,255,0.25)" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M86 75C86 66 81 58 74 58C70 58 66.5 60.5 64.5 64.5" stroke="rgba(0,212,255,0.25)" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M36 38L44 32" stroke="rgba(0,212,255,0.15)" stroke-width="0.8" stroke-dasharray="3 3"/>
+                <path d="M64 38L56 32" stroke="rgba(0,212,255,0.15)" stroke-width="0.8" stroke-dasharray="3 3"/>
+                <defs><linearGradient id="tm1" x1="50" y1="20" x2="50" y2="40"><stop stop-color="#00d4ff" stop-opacity="0.8"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0.3"/></linearGradient></defs>
+              </svg>
             </div>
           </div>
           <div class="sol-card__content">
@@ -2653,12 +2431,22 @@
         <!-- Card 5: Cloud Solutions -->
         <div class="sol-card" tabindex="0">
           <div class="sol-card__visual">
-            <div class="sol-card__glow" style="--glow: rgba(56,189,248,0.12);"></div>
-            <div class="sol-card__object obj-cloud">
-              <div class="obj-cloud__top2"></div>
-              <div class="obj-cloud__top"></div>
-              <div class="obj-cloud__body"></div>
-              <div class="obj-cloud__edge"></div>
+            <div class="sol-card__glow" style="--glow: rgba(0,212,255,0.15);"></div>
+            <div class="sol-icon" style="animation-delay: -3s;">
+              <svg viewBox="0 0 100 100" fill="none">
+                <path d="M75 58H78C85.2 58 91 52.2 91 45C91 37.8 85.2 32 78 32C77.4 32 76.8 32.1 76.2 32.1C73.8 23.8 66.2 18 57 18C46 18 37 26 35.5 36.5C28.2 37.5 22.5 43.8 22.5 51.5C22.5 55.1 23.9 58 23.9 58H25" stroke="url(#cl1)" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M25 62H75" stroke="rgba(0,212,255,0.12)" stroke-width="1"/>
+                <path d="M40 62V78" stroke="rgba(0,212,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M50 62V82" stroke="rgba(0,212,255,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M60 62V76" stroke="rgba(0,212,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M36 78L44 78" stroke="rgba(0,212,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+                <path d="M46 82L54 82" stroke="rgba(0,212,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+                <path d="M56 76L64 76" stroke="rgba(0,212,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+                <circle cx="40" cy="72" r="1.5" fill="rgba(0,212,255,0.5)"/>
+                <circle cx="50" cy="72" r="1.5" fill="rgba(0,212,255,0.7)"/>
+                <circle cx="60" cy="72" r="1.5" fill="rgba(0,212,255,0.5)"/>
+                <defs><linearGradient id="cl1" x1="57" y1="18" x2="57" y2="58"><stop stop-color="#00d4ff" stop-opacity="0.8"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0.25"/></linearGradient></defs>
+              </svg>
             </div>
           </div>
           <div class="sol-card__content">
@@ -2672,12 +2460,19 @@
         <!-- Card 6: Training & Support -->
         <div class="sol-card" tabindex="0">
           <div class="sol-card__visual">
-            <div class="sol-card__glow" style="--glow: rgba(244,63,94,0.12);"></div>
-            <div class="sol-card__object obj-book">
-              <div class="obj-book__cover"></div>
-              <div class="obj-book__spine"></div>
-              <div class="obj-book__page"></div>
-              <div class="obj-book__edge"></div>
+            <div class="sol-card__glow" style="--glow: rgba(0,212,255,0.15);"></div>
+            <div class="sol-icon" style="animation-delay: -1.8s;">
+              <svg viewBox="0 0 100 100" fill="none">
+                <path d="M50 20L15 38L50 56L85 38L50 20Z" stroke="url(#ed1)" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M25 45V65L50 78L75 65V45" stroke="rgba(0,212,255,0.35)" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M50 56V78" stroke="rgba(0,212,255,0.25)" stroke-width="1" stroke-dasharray="3 3"/>
+                <path d="M85 38V62" stroke="rgba(0,212,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="85" cy="64" r="3" stroke="rgba(0,212,255,0.5)" stroke-width="1.2"/>
+                <path d="M35 50V60" stroke="rgba(0,212,255,0.12)" stroke-width="0.8"/>
+                <path d="M65 50V60" stroke="rgba(0,212,255,0.12)" stroke-width="0.8"/>
+                <circle cx="50" cy="38" r="4" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.4)" stroke-width="1"/>
+                <defs><linearGradient id="ed1" x1="50" y1="20" x2="50" y2="56"><stop stop-color="#00d4ff" stop-opacity="0.8"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0.25"/></linearGradient></defs>
+              </svg>
             </div>
           </div>
           <div class="sol-card__content">
